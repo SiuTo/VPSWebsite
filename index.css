@@ -1,0 +1,14 @@
+body{
+	margin: 10%;
+	font-family: Arial, "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+	text-align: center;
+}
+
+p{
+	font-size: 1.2em;
+	text-align: center;
+}
+
