@@ -1,7 +1,5 @@
-clean:
-	rm -rf /var/www/html/*
-
 install:
+	rm -rf /var/www/html/*
 	cp *.css *.js *.php /var/www/html
 
 run:
