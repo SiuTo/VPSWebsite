@@ -11,6 +11,45 @@
 
 	<body>
 		<h1>A Personal VPS</h1>
+		<?php
+			function test_input($data)
+			{
+				$data=trim($data);
+				$data=stripslashes($data);
+				$data=htmlspecialchars($data);
+				return $data;
+			}
+
+			function testVPNForm()
+			{
+				global $name, $email, $reason;
+				if (empty($_POST["name"])) return "Name is required.";
+				else $name=test_input($_POST["name"]);
+				if (empty($_POST["email"])) return "Email is required.";
+				else $email=test_input($_POST["email"]);
+				$reason=test_input($_POST["reason"]);
+
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return "Illegal email address.";
+
+				$connect=mysql_connect("localhost", "apache", "123456");
+				if (!$connect) die("Could not connect: ". mysql_error());
+				mysql_select_db("website", $connect);
+				mysql_query("set names 'utf8'");
+				$result=mysql_query("SELECT * FROM vpn WHERE email='$email'");
+				if (!empty(mysql_fetch_array($result)))
+				{
+					mysql_close("$connect");
+					return "$email has been applied.";
+				}
+				mysql_query("INSERT INTO vpn(name, email, reason, status) VALUES('$name', '$email', '$reason', 0)");
+				mysql_close("$connect");
+				return "Succeed!";
+			}
+
+			$name=$email=$reason="";
+			if ($_SERVER["REQUEST_METHOD"]=="POST")
+				echo "<script>alert(\"".testVPNForm()."\");</script>\n";
+		?>
 		<div role="tabpanel" id="menu">
 			<ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></i>
@@ -36,19 +75,19 @@
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">Name:</label>
 							<div class="col-sm-8">
-								<input class="form-control" type="text" name="name" id="name" />
+								<input class="form-control" type="text" name="name" id="name" value="<?php echo $name; ?>"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="email" class="col-sm-2 control-label">Email:</label>
 							<div class="col-sm-8">
-								<input class="form-control" type="text" name="email" id="email" />
+								<input class="form-control" type="text" name="email" id="email" value="<?php echo $email; ?>"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="reason" class="col-sm-2 control-label">Reason:</label>
 							<div class="col-sm-8">
-								<input class="form-control col-sm-8" type="text" name="reason" id="reason" />
+								<input class="form-control col-sm-8" type="text" name="reason" id="reason" value="<?php echo $email; ?>"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -71,44 +110,6 @@
 				</div>
 			</div>
 		</div>
-		<?php
-			function test_input($data)
-			{
-				$data=trim($data);
-				$data=stripslashes($data);
-				$data=htmlspecialchars($data);
-				return $data;
-			}
-
-			function testVPNForm()
-			{
-				$name=$email=$reason="";
-				if (empty($_POST["name"])) return "Name is required.";
-				else $name=test_input($_POST["name"]);
-				if (empty($_POST["email"])) return "Email is required.";
-				else $email=test_input($_POST["email"]);
-				$reason=test_input($_POST["reason"]);
-
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return "Illegal email address.";
-
-				$connect=mysql_connect("localhost", "apache", "123456");
-				if (!$connect) die("Could not connect: ". mysql_error());
-				mysql_select_db("website", $connect);
-				mysql_query("set names 'utf8'");
-				$result=mysql_query("SELECT * FROM vpn WHERE email='$email'");
-				if (!empty(mysql_fetch_array($result)))
-				{
-					mysql_close("$connect");
-					return "$email has been applied.";
-				}
-				mysql_query("INSERT INTO vpn VALUES('$name', '$email', '$reason', 'pending')");
-				mysql_close("$connect");
-				return "Succeed!";
-			}
-
-			if ($_SERVER["REQUEST_METHOD"]=="POST")
-				echo "<script>alert(\"".testVPNForm()."\");</script>\n";
-		?>
 	</body>
 </html>
 
