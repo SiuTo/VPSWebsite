@@ -13,6 +13,8 @@
 	<body class="container">
 		<h1>A Personal VPS</h1>
 		<?php
+			require "sendmail.php";
+			
 			function test_input($data)
 			{
 				$data=trim($data);
@@ -44,6 +46,7 @@
 				}
 				mysql_query("INSERT INTO vpn(name, email, reason, status) VALUES('$name', '$email', '$reason', 0)");
 				mysql_close("$connect");
+				sendmail("New Request");
 				return "Succeed!";
 			}
 
