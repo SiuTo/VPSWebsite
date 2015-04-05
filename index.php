@@ -3,13 +3,14 @@
 	<head>
 		<title>A Personal VPS</title>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="index.css" />
 		<script src="jquery-1.11.2.min.js"></script>
 		<script src="bootstrap.min.js"></script>
 	</head>
 
-	<body>
+	<body class="container">
 		<h1>A Personal VPS</h1>
 		<?php
 			function test_input($data)
@@ -58,7 +59,7 @@
 
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="home">
-					<p id="home">
+					<p>
 						If there is any problem, please contact me via <a href="mailto:admin@siuto.me">admin@siuto.me</a>.
 					</p>
 				</div>
