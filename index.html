@@ -13,8 +13,8 @@
 			}
 
 			header, section, footer {
-				padding-top: 3rem;
-				padding-bottom: 3rem;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
 			}
 
 			.list-group, .block{
@@ -62,6 +62,20 @@
 			a:hover, a:active {
 				text-decoration: underline;
 			}
+
+			#myCanvasContainer {
+				float: right;
+			}
+
+			#introduction {
+				margin: 0 350 0 0;
+				height: 200px;
+				padding-top: 100px;
+			}
+
+			#tag-list {
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -74,10 +88,31 @@
 
 		<section>
 			<div class="content">
-				<p>
+				<div id="myCanvasContainer">
+					<canvas width="300" height="300" id="myCanvas">
+					</canvas>
+					<ul id="tag-list">
+						<li><a href="#" onclick="return tpu(this)">C/C++</a></li>
+						<li><a href="#" onclick="return tpu(this)">Java</a></li>
+						<li><a href="#" onclick="return tpu(this)">Python</a></li>
+						<li><a href="#" onclick="return tpu(this)">Matlab</a></li>
+						<li><a href="#" onclick="return tpu(this)">R</a></li>
+						<li><a href="#" onclick="return tpu(this)">Shell</a></li>
+						<li><a href="#" onclick="return tpu(this)">SQL</a></li>
+						<li><a href="#" onclick="return tpu(this)">LaTeX</a></li>
+						<li><a href="#" onclick="return tpu(this)">HTML</a></li>
+						<li><a href="#" onclick="return tpu(this)">CSS</a></li>
+						<li><a href="#" onclick="return tpu(this)">JavaScript</a></li>
+						<li><a href="#" onclick="return tpu(this)">PHP</a></li>
+					</ul>
+				</div>
+
+				<p id="introduction">
 					Studying Computer Science at Fudan University.
 				</p>
 			</div>
+
+
 		</section>
 
 		<footer>
@@ -99,6 +134,29 @@
 				</div>
 			</div>
 		</footer>
+
+		<script src="js/tagcanvas.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var options = {
+				initial: [0.1, -0.1],
+				textHeight: 22,
+				textColour: '#303F9F',
+				minBrightness: 0.3,
+				outlineMethod: 'block',
+				outlineColour: '#C5CAE9',
+				clickToFront: 500,
+				reverse: true,
+				fadeIn: 1000
+			};
+			window.onload = function() {
+				try {
+					TagCanvas.Start('myCanvas', 'tag-list', options);
+				} catch(e) {
+					// something went wrong, hide the canvas container
+					document.getElementById('myCanvasContainer').style.display = 'none';
+				}
+			};
+		 </script>
 	</body>
 <html>
 
