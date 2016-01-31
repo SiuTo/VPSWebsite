@@ -17,30 +17,32 @@
 				padding-bottom: 3rem;
 			}
 
-			footer {
-				background-color: #212121;
+			.list-group, .block{
+				display: inline-block;
+				margin-left: 2rem;
+				margin-right: 2rem;
 			}
+
 
 			.list-group {
 				list-style: none;
-				display: inline-block;
-				margin-left: 1rem;
-				margin-right: 1rem;
+				padding-left: 0;
+				width: 50%;
 			}
 
 			.list-group li {
 				height: 5rem;
 				line-height: 5rem;
-				font-size: 2rem;
 			}
 
-			.list-group li img {
+			.list-group li img, .block img {
 				padding-right: 1rem;
 				vertical-align: middle;
 			}
 
-			.list-group li span, .list-group li a {
-				color: #FFFFFF;
+			.block {
+				position: relative;
+				bottom: 3rem;
 			}
 
 			h1 {
@@ -48,7 +50,7 @@
 				font-size: 3rem;
 			}
 
-			p {
+			p, span, a {
 				color: #424242;
 				font-size: 2rem;
 			}
@@ -82,14 +84,19 @@
 			<div class="content">
 				<ul class="list-group">
 					<li>
-						<img src="images/ic_location_on_white_24dp_2x.png" />
+						<img src="images/ic_location_on_black_24dp_2x.png" />
 						<span>Shanghai, China</span>
 					</li>
 					<li>
-						<img src="images/ic_email_white_24dp_2x.png" />
+						<img src="images/ic_email_black_24dp_2x.png" />
 						<a href="mailto:418xiaotao@163.com">418xiaotao@163.com</a>
 					</li>
 				</ul>
+
+				<div class="block">
+					<a href="https://github.com/SiuTo" target="_blank"><img src="images/github.png"/></a>
+					<a href="https://www.linkedin.com/in/liangxiaotao" target="_blank"><img src="images/linkedin.png"/></a>
+				</div>
 			</div>
 		</footer>
 	</body>
