@@ -4,13 +4,13 @@
 		<link rel="icon" href="favicon.ico" />
 		<style type="text/css">
 			h1 {
-				color: #303030;
+				color: #212121;
 				font-size: 3rem;
 			}
 
 			p, span, a {
 				color: #424242;
-				font-size: 2rem;
+				font-size: 32px;
 			}
 
 			p {
@@ -56,7 +56,19 @@
 				line-height: 5rem;
 			}
 
-			.list-group li img, .block img {
+			.list-group li svg {
+				padding-right: 1rem;
+				width: 3rem;
+				height: 3rem;
+				fill: #424242;
+				vertical-align: middle
+			}
+
+			.list-group li a, .list-group li span {
+				vertical-align: middle
+			}
+			
+			.block img {
 				padding-right: 1rem;
 				vertical-align: middle;
 			}
@@ -122,11 +134,17 @@
 			<div class="content">
 				<ul class="list-group">
 					<li>
-						<img src="images/ic_location_on_black_24dp_2x.png" />
+						<svg viewBox="0 0 24 24">
+							<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+							<path d="M0 0h24v24H0z" fill="none"/>
+						</svg>
 						<span>Shanghai, China</span>
 					</li>
 					<li>
-						<img src="images/ic_email_black_24dp_2x.png" />
+						<svg viewBox="0 0 24 24">
+							<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+							<path d="M0 0h24v24H0z" fill="none"/>
+						</svg>
 						<a href="mailto:418xiaotao@163.com">418xiaotao@163.com</a>
 					</li>
 				</ul>
