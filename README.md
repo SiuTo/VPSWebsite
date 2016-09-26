@@ -1,2 +1,2 @@
 # VPSWebsite
-The website of my VPS on DigitalOcean
+[My website](http://siuto.github.io/VPSWebsite/)
